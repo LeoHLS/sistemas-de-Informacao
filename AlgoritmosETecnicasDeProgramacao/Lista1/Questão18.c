@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 
 int main () {
 
@@ -8,8 +8,8 @@ int main () {
     printf("Informe o valor da conta: R$ ");
     scanf("%f", &valor);
 
-    float semCents = floorf(valor)/3;
-    float comCents = (floorf(valor)/3)+(valor - floorf(valor));
+    float semCents = floorf(valor/3);
+    float comCents = (3*(valor/3 - floorf(valor/3)))+floorf(valor/3);
 
     printf("Carlos pagará R$ %.2f\nAndré pagará R$ %.2f\nFelipe pagará R$ %.2f", semCents, semCents, comCents);
     
