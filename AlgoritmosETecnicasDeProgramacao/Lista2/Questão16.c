@@ -1,17 +1,40 @@
 #include <stdio.h>
-#include <math.h>
-#include <tgmath.h>
 
-void main () {
+int main()
+{
+    int numero;
 
-    float fatAnterior;
+    printf("Digite um numero inteiro positivo de 1 a 4 digitos: ");
+    scanf("%d", &numero);
 
-    printf("Informe o faturamento do mês anterior: R$ ");
-    scanf("%f", &fatAnterior);
+    if (numero < 0 || numero > 9999)
+    {
+        printf("Numero invalido!\n");
+    }
+    else
+    {
+        int unidades = numero % 10;
+        int dezenas = (numero / 10) % 10;
+        int centenas = (numero / 100) % 10;
+        int milhares = (numero / 1000) % 10;
 
-    float meta = fatAnterior * 1.2;
+        if (numero >= 1000)
+        {
+            printf("MILHARES = %d\n", milhares);
+        }
+        if (numero >= 100)
+        {
+            printf("CENTENA = %d\n", centenas);
+        }
+        if (numero >= 10)
+        {
+            printf("DEZENA = %d\n", dezenas);
+        }
+        if (numero > 0)
+        {
+            printf("UNIDADE = %d\n", unidades);
+        }
+    }
 
-    printf("A meta do próximo mês é de R$ %.2f, com um aumento de R$ %.2f.", meta, meta-fatAnterior);
-    printf("A quantidade estimada de peças a serem vendidas para o alcance da meta:\n\nApenas o produto 1: %.2f peças\nApenas produto 2: %.2f peças\nApenas produto 3: %.2f peças", (meta/150), (meta/220), (meta/97));
-    
+    return 0;
 }

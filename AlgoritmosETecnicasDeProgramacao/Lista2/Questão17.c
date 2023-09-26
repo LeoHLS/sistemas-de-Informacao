@@ -1,29 +1,40 @@
 #include <stdio.h>
 
+int main() {
+    int num_sanduiches;
+    float queijo_total, presunto_total, carne_total;
+    const float peso_queijo = 50.0;
+    const float peso_carne = 120.0;
 
-void main () {
+    printf("Digite a quantidade de sanduiches a fazer: ");
+    scanf("%d", &num_sanduiches);
 
-    int qntPaes;
-    int qntBroas;
-    float valorReforma;
+    queijo_total = num_sanduiches * 2 * peso_queijo / 1000.0; 
+    presunto_total = num_sanduiches * peso_queijo / 1000.0; 
+    carne_total = num_sanduiches * peso_carne / 1000.0; 
+    printf("Para produzir %d sanduiches será necessário necessários:\n", num_sanduiches);
+    printf("Queijo: %.3f kg\n", queijo_total);
+    printf("Presunto: %.3f kg\n", presunto_total);
+    printf("Carne: %.3f kg\n", carne_total);
 
-    printf("Informe a quantidade de pães vendidos: ");
-    scanf("%i", &qntPaes);
-    printf("Informe a quantidade de broas vendidos: ");
-    scanf("%i", &qntBroas);
-    printf("Informe o valor da reforma: ");
-    scanf("%f", &valorReforma);
+    float presunto_disponivel;
+    printf("Digite a quantidade de presunto disponivel (kg): ");
+    scanf("%f", &presunto_disponivel);
 
-    float fatPaes = qntPaes * 0.12;
-    float fatBroas = qntBroas * 1.6;
-    float fatTotal = fatPaes + fatBroas;
-    float deposito = fatTotal * 0.1;
+    if (presunto_disponivel < presunto_total) {
+        int sanduiches_com_presunto = (int)(presunto_disponivel / (peso_queijo / 1000.0));
 
-    printf("O valor do faturamento dos pães foi R$ %.2f\nO valor do faturamento das broas foi de R$ %.2f\n", fatPaes, fatBroas);
-    printf("O faturamento total foi de R$ %.2f\nO deposito será de R$ %.2f\n", fatTotal, deposito);
-    printf("Serão necessários %.0f dias para pagar a reforma.", (valorReforma/deposito));
+        printf("Quantidade de presunto insuficiente para todos os sanduiches.\n");
+        printf("Produza %d sanduiches com presunto.\n", sanduiches_com_presunto);
 
+        float mortadela_necessaria = (presunto_total - presunto_disponivel) / (70.0 / 1000.0);
 
-    
+        printf("Sugestao: Utilize %.3f kg de mortadela para produzir o restante dos sanduiches.\n", mortadela_necessaria);
 
+        float presunto_sobrando = presunto_disponivel - (sanduiches_com_presunto * (peso_queijo / 1000.0));
+
+        printf("Quantidade de presunto que sobrou: %.3f kg\n", presunto_sobrando);
+    } 
+
+    return 0;
 }
