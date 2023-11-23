@@ -19,7 +19,7 @@ void main()
     float *notas, media;
     int qntNotas;
 
-    printf("Informe a qunatidade de notas: ");
+    printf("Informe a quantidade de notas: ");
     scanf("%d", &qntNotas);
 
     notas = (float *)malloc(qntNotas * sizeof(float));
